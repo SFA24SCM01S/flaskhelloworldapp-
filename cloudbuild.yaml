@@ -1,13 +1,17 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$PROJECT_NAME', '.']
+  args: ['build', '-t', 'gcr.io/i-mariner-442318-b9/flaskhelloworldapp 
+', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/$PROJECT_NAME']
+  args: ['push', 'gcr.io/i-mariner-442318-b9/flaskhelloworldapp 
+']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', '$PROJECT_NAME', '--image', 'gcr.io/$PROJECT_ID/$PROJECT_NAME', '--region', 'us-central1', '--platform', 'managed','--port','80']
+  args: ['run', 'deploy', 'flaskhelloworldapp 
+', '--image', 'gcr.io/i-mariner-442318-b9/flaskhelloworldapp 
+', '--region', 'us-central1', '--platform', 'managed','--port','80']
 images:
-- gcr.io/$PROJECT_ID/$PROJECT_NAME
+- gcr.io/i-mariner-442318-b9/flaskhelloworldapp 
